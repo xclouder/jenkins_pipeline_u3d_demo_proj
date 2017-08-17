@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class AutoBuild
 {
-	public void BuildAPK()
+	public static void BuildAPK()
 	{
 		PlayerSettings.bundleIdentifier = "com.xclouder.demo";
         PlayerSettings.productName = "pipelinedemo";
@@ -13,7 +13,7 @@ public class AutoBuild
         BuildPipeline.BuildPlayer(GetScenes(), GetOutPath(), BuildTarget.Android, BuildOptions.None);
 	}
 
-	string[] GetScenes()
+	static string[] GetScenes()
 	{
 		var scenes = new List<string>();
 
@@ -27,7 +27,7 @@ public class AutoBuild
         return scenes.ToArray();
 	}
 
-	string GetOutPath()
+	static string GetOutPath()
 	{
 
 		string[] args = System.Environment.GetCommandLineArgs();
