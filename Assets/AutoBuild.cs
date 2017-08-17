@@ -8,7 +8,7 @@ public class AutoBuild
 		PlayerSettings.bundleIdentifier = "com.xclouder.demo";
         PlayerSettings.productName = "pipelinedemo";
 
-        BuildPipeline.BuildPlayer(GetScenes(), m_outPath, BuildTarget.Android, BuildOptions.None);
+        BuildPipeline.BuildPlayer(GetScenes(), GetOutPath(), BuildTarget.Android, BuildOptions.None);
 	}
 
 	string[] GetScenes()
@@ -23,6 +23,30 @@ public class AutoBuild
                 scenes.Add(scene.path);
         }
         return scenes.ToArray();
+	}
+
+	string GetOutPath()
+	{
+
+		string[] args = System.Environment.GetCommandLineArgs();
+
+        for (int i = 0; i < args.Length; ++i)
+        {
+            if (args[i].Equals("-outPath"))
+            {
+                if (i + 1 < args.Length)
+                {
+                    return args[i + 1];
+                    Debug.Log("m_outPath:" + m_outPath);
+
+                    i++;
+                    continue;
+                }
+            }
+        }
+
+        return null;
+
 	}
 
 
