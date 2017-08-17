@@ -38,11 +38,10 @@ public class AutoBuild
             {
                 if (i + 1 < args.Length)
                 {
-                    return args[i + 1];
-                    Debug.Log("m_outPath:" + m_outPath);
+                    var outPath = args[i + 1];
+                    Debug.Log("outPath:" + outPath);
 
-                    i++;
-                    continue;
+                    return outPath;
                 }
             }
         }
