@@ -10,7 +10,9 @@ public class AutoBuild
 		PlayerSettings.bundleIdentifier = "com.xclouder.demo";
         PlayerSettings.productName = "pipelinedemo";
 
-        BuildPipeline.BuildPlayer(GetScenes(), GetOutPath(), BuildTarget.Android, BuildOptions.None);
+        var outPath = GetOutPath();
+        Debug.Log("outPath:" + outPath);
+        BuildPipeline.BuildPlayer(GetScenes(), outPath, BuildTarget.Android, BuildOptions.None);
 	}
 
 	static string[] GetScenes()
